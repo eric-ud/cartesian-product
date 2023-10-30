@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background-color: #4C566A;
+        color: #D8DEE9;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    input[type='submit'] {
+        background-color: #81A1C1;
+        color: #D8DEE9;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    div.list {
+	    text-align: center;
+	}
+
+    ol { 
+	    display: inline-block; 
+	    text-align: left; 
+	}
+    .tg  {border-collapse:collapse;border-spacing:0;display:inline-table;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Декартово произведение Excel листов</title>
+</head>
+<body>
+    <div>
+        <p>
+            Данная страничка поможет вам перемножить строки вашей книги Excel.
+        </p>
+        <p>
+            Например конвертировать два ваших листа: <br>
+            <table class="tg">
+                <thead>
+                  <tr>
+                    <th class="tg-0pky">Столбец A</th>
+                    <th class="tg-0lax">Столбец B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tg-0pky">AAA</td>
+                    <td class="tg-0lax">111</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-0pky">BBB</td>
+                    <td class="tg-0lax">222</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-0pky">CCC</td>
+                    <td class="tg-0lax">333</td>
+                  </tr>
+                </tbody>
+                </table>
+                в =>
+                <table class="tg">
+                    <thead>
+                      <tr>
+                        <th class="tg-0pky">Столбец A</th>
+                        <th class="tg-0lax">Столбец B</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="tg-0pky">AAA</td>
+                        <td class="tg-0lax">111</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0pky">AAA</td>
+                        <td class="tg-0lax">222</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0pky">AAA</td>
+                        <td class="tg-0lax">333</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">BBB</td>
+                        <td class="tg-0lax">111</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">BBB</td>
+                        <td class="tg-0lax">222</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">BBB</td>
+                        <td class="tg-0lax">333</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">CCC</td>
+                        <td class="tg-0lax">111</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">CCC</td>
+                        <td class="tg-0lax">222</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-0lax">CCC</td>
+                        <td class="tg-0lax">333</td>
+                      </tr>
+                    </tbody>
+                    </table>
+        </p>
+        <p>
+            Пожалуйста, выберете одну книгу Excel которая отвечает следующим требованиям: 
+                <div class="list">
+                    <ol type="1">   
+                        <li>Расширение файла ".xlsx".</li>
+                        <li>Имеет более одного листа.</li>
+                        <li>Можно использовать сколько угодно листов, они все перемножаться.</li>
+                        <li>Если в результирующем массиве строк будет более 1 миллиона, то книга на выходе будет с несколькими листами.</li>
+                        <li>В результирующем массиве строк должно быть менее 3 миллионов.</li>
+                    </ol>
+                </div>
+        </p>
+        <form action="/uploader" method="POST" enctype="multipart/form-data">
+            <label for="xlsx"></label> <br>
+            <input type="file" id="xlsx" name="excel" accept=".xlsx" /> <br>
+            <input type="submit"/>
+        </form>
+    </div>
+</body>
+</html>
