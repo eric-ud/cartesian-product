@@ -13,6 +13,7 @@ import openpyxl
 import io
 from functools import reduce
 from datetime import datetime
+import zipfile
 
 app = FastAPI()
 
@@ -32,7 +33,14 @@ def create_upload_file(
 
     wb = io.BytesIO(excel.file.read())
 
-    openpyxl_reader = openpyxl.load_workbook(wb)
+    try:
+        openpyxl_reader = openpyxl.load_workbook(wb)
+    except zipfile.BadZipFile:
+        raise HTTPException(
+            status_code=422,
+            detail="Неизвестный тип файла или битый файл.",
+        )
+
     if np.prod([ws.max_row for ws in openpyxl_reader.worksheets]) > 3_000_000:
         raise HTTPException(
             status_code=422,
